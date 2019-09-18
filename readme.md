@@ -1,4 +1,4 @@
-# Thomas Hansen
+# gRPC image server
 # About
 
 This setup was done using Ubuntu 18.04 and uses the packages gRPC, Protoc, and OpenCV. All the code is
