@@ -48,6 +48,11 @@ message NLCustomImageEndpointRequest {
     NLImage image = 1;
 }
 
+message NLBlurImageEndpointRequest {
+    NLImage image = 1;
+    int32 kernel = 2;
+}
+
 // Your response.  Feel free to replace this with NLImage or whatever
 // you'd like.
 message NLCustomImageEndpointResponse {
@@ -57,5 +62,5 @@ message NLCustomImageEndpointResponse {
 service NLImageService {
     rpc RotateImage(NLImageRotateRequest) returns (NLImage);
     rpc CustomImageEndpoint(NLCustomImageEndpointRequest) returns (NLCustomImageEndpointResponse);
-    rpc MedianBlurFilter(NLCustomImageEndpointRequest) returns (NLImage);
+    rpc MedianBlurFilter(NLBlurImageEndpointRequest) returns (NLImage);
 }
