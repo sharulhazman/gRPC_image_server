@@ -20,6 +20,7 @@
 static const char* NLImageService_method_names[] = {
   "/NLImageService/RotateImage",
   "/NLImageService/CustomImageEndpoint",
+  "/NLImageService/MedianBlurFilter",
 };
 
 std::unique_ptr< NLImageService::Stub> NLImageService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -31,6 +32,7 @@ std::unique_ptr< NLImageService::Stub> NLImageService::NewStub(const std::shared
 NLImageService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_RotateImage_(NLImageService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_CustomImageEndpoint_(NLImageService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_MedianBlurFilter_(NLImageService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status NLImageService::Stub::RotateImage(::grpc::ClientContext* context, const ::NLImageRotateRequest& request, ::NLImage* response) {
@@ -89,6 +91,34 @@ void NLImageService::Stub::experimental_async::CustomImageEndpoint(::grpc::Clien
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::NLCustomImageEndpointResponse>::Create(channel_.get(), cq, rpcmethod_CustomImageEndpoint_, context, request, false);
 }
 
+::grpc::Status NLImageService::Stub::MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::NLImage* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_MedianBlurFilter_, context, request, response);
+}
+
+void NLImageService::Stub::experimental_async::MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_MedianBlurFilter_, context, request, response, std::move(f));
+}
+
+void NLImageService::Stub::experimental_async::MedianBlurFilter(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLImage* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_MedianBlurFilter_, context, request, response, std::move(f));
+}
+
+void NLImageService::Stub::experimental_async::MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_MedianBlurFilter_, context, request, response, reactor);
+}
+
+void NLImageService::Stub::experimental_async::MedianBlurFilter(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLImage* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_MedianBlurFilter_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::NLImage>* NLImageService::Stub::AsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::NLImage>::Create(channel_.get(), cq, rpcmethod_MedianBlurFilter_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::NLImage>* NLImageService::Stub::PrepareAsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::NLImage>::Create(channel_.get(), cq, rpcmethod_MedianBlurFilter_, context, request, false);
+}
+
 NLImageService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       NLImageService_method_names[0],
@@ -100,6 +130,11 @@ NLImageService::Service::Service() {
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< NLImageService::Service, ::NLCustomImageEndpointRequest, ::NLCustomImageEndpointResponse>(
           std::mem_fn(&NLImageService::Service::CustomImageEndpoint), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      NLImageService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< NLImageService::Service, ::NLCustomImageEndpointRequest, ::NLImage>(
+          std::mem_fn(&NLImageService::Service::MedianBlurFilter), this)));
 }
 
 NLImageService::Service::~Service() {
@@ -113,6 +148,13 @@ NLImageService::Service::~Service() {
 }
 
 ::grpc::Status NLImageService::Service::CustomImageEndpoint(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLCustomImageEndpointResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status NLImageService::Service::MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response) {
   (void) context;
   (void) request;
   (void) response;

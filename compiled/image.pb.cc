@@ -149,12 +149,13 @@ const char descriptor_table_protodef_image_2eproto[] =
   "\020\002\022\023\n\017TWO_SEVENTY_DEG\020\003\"7\n\034NLCustomImage"
   "EndpointRequest\022\027\n\005image\030\001 \001(\0132\010.NLImage"
   "\"8\n\035NLCustomImageEndpointResponse\022\027\n\005ima"
-  "ge\030\001 \001(\0132\010.NLImage2\226\001\n\016NLImageService\022.\n"
+  "ge\030\001 \001(\0132\010.NLImage2\323\001\n\016NLImageService\022.\n"
   "\013RotateImage\022\025.NLImageRotateRequest\032\010.NL"
   "Image\022T\n\023CustomImageEndpoint\022\035.NLCustomI"
   "mageEndpointRequest\032\036.NLCustomImageEndpo"
-  "intResponseB\036\n\032com.neuralink.interviewin"
-  "gP\001b\006proto3"
+  "intResponse\022;\n\020MedianBlurFilter\022\035.NLCust"
+  "omImageEndpointRequest\032\010.NLImageB\036\n\032com."
+  "neuralink.interviewingP\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_image_2eproto_deps[1] = {
 };
@@ -167,7 +168,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ima
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_image_2eproto_once;
 static bool descriptor_table_image_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_image_2eproto = {
-  &descriptor_table_image_2eproto_initialized, descriptor_table_protodef_image_2eproto, "image.proto", 571,
+  &descriptor_table_image_2eproto_initialized, descriptor_table_protodef_image_2eproto, "image.proto", 632,
   &descriptor_table_image_2eproto_once, descriptor_table_image_2eproto_sccs, descriptor_table_image_2eproto_deps, 4, 0,
   schemas, file_default_instances, TableStruct_image_2eproto::offsets,
   file_level_metadata_image_2eproto, 4, file_level_enum_descriptors_image_2eproto, file_level_service_descriptors_image_2eproto,
