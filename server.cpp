@@ -93,6 +93,23 @@ public:
      * Custom endpoint fixes images that have dead pixels by applying a blur to
      * the photo
     */
+    Status MedianBlurFilter(ServerContext* context, const NLCustomImageEndpointRequest* request, NLImage* reply) {
+        // read in image
+        cv::Mat src = reconstructImage((*request).image());
+
+        // src, dst, kernel
+        medianBlur(src, src, 5);
+
+        // places blurred photo into reply NLImage protobuf
+        deconstructImage(src, reply);
+
+        return Status::OK;
+    }
+
+    /*
+     * Custom endpoint converts an image into ascii art, and returns the art
+     * as an ascii string.
+    */
     Status CustomImageEndpoint(ServerContext* context, const NLCustomImageEndpointRequest* request, NLCustomImageEndpointResponse* reply) {
         // read in image
         cv::Mat src = reconstructImage((*request).image());

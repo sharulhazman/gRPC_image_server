@@ -117,6 +117,51 @@ public:
 
     }
 
+    void medianBlurFilter(char* fileName, int is_color_image) {
+
+        // image we're going to process
+        cv::Mat frame;
+        frame = cv::imread(fileName, is_color_image);
+
+        // check for invalid input
+        if (!frame.data) {
+            printf("Error with data; invalid input\n");
+            return;
+        }
+
+        // Data we are sending to the server.
+        NLCustomImageEndpointRequest *request = new NLCustomImageEndpointRequest; // has mutable_image()
+        NLImage tmp = deconstructImage(frame, is_color_image);
+        // request->set_allocated_image(*tmp);
+        request->mutable_image()->set_height(tmp.height());
+        request->mutable_image()->set_width(tmp.width());
+        request->mutable_image()->set_color(tmp.color());
+        request->mutable_image()->set_data(tmp.data());
+
+        // Container for the data we expect from the server.
+        NLImage reply;
+
+        // Context for the client. Required but not used
+        grpc::ClientContext context;
+
+        // The actual RPC.
+        grpc::Status status = stub_->MedianBlurFilter(&context, *request, &reply);
+
+        // rebuild the reply into a Mat image type
+        cv::Mat final = reconstructImage(reply);
+
+        // Act upon its status.
+        if (status.ok()) {
+            // save image
+            cv::imwrite("median_blur_image.png", final);
+            cout << "Saved image successfully!" << endl;
+        } else {
+            cout << status.error_code() << ": " << status.error_message()
+                    << endl;
+        }
+
+    }
+
     void CustomImageEndpoint(char* fileName, int is_color_image) {
 
         // image we're going to process
@@ -215,6 +260,12 @@ int main() {
         }
 
         imageChannel.RotateImage(name, is_color_image, rotation);
+    }
+
+    cout << "Would you like to run a median blur filter over the image (soften it)? (Y/n)" << endl;
+    cin >> is_yes;
+    if (is_yes == 'y' || is_yes == 'Y') {
+        imageChannel.medianBlurFilter(name, CV_8U);
     }
 
     cout << "Would you like to build ascii art? (Y/n)" << endl;
