@@ -1,10 +1,12 @@
 # gRPC image server
 # About
 
-This setup was done using Ubuntu 18.04 and uses the packages gRPC, Protoc, and OpenCV. All the code is
+This project was built from a prompt, where I was given an image.proto file and told to create a gRPC server from it that could modify images.
+
+I ran and compiled this using Ubuntu 18.04 and uses the packages gRPC, Protoc, and OpenCV. All the code is
 written in C++.
 
-It's a relativly simple server that sends a image Mat file over a protobuf, modifies the image at the server, and then responds with the image to the client. The image manipulation you can do is mostly simple stuff like rotations and for fun I added an image to ascii generator. Compilation can't be done using CMake since there's an issue with the gRPC CMake installation (it's a known issue), so I just did it with a shell script which is working well for now so I haven't replaced it.
+It's a relatively simple server that sends a image Mat file over a protobuf, modifies the image at the server, and then responds with the image to the client. The image manipulation you can do is mostly simple stuff like rotations and for fun I added an image to ascii generator. Compilation can't be done using CMake since there's an issue with the gRPC CMake installation (it's a known issue), so I just did it with a shell script which is working well for now so I haven't replaced it.
 
 # Setup
 ## Install gRPC and Protobuf
@@ -113,4 +115,3 @@ chmod +x build.sh
 
 And that should be it! You should now be able to start up the server, run the client, and pass
 images between the gRPC server/client.
-
