@@ -58,11 +58,11 @@ class NLImageService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::NLCustomImageEndpointResponse>> PrepareAsyncCustomImageEndpoint(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::NLCustomImageEndpointResponse>>(PrepareAsyncCustomImageEndpointRaw(context, request, cq));
     }
-    virtual ::grpc::Status MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::NLImage* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>> AsyncMedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status MedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::NLImage* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>> AsyncMedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>>(AsyncMedianBlurFilterRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>> PrepareAsyncMedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>> PrepareAsyncMedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>>(PrepareAsyncMedianBlurFilterRaw(context, request, cq));
     }
     class experimental_async_interface {
@@ -76,9 +76,9 @@ class NLImageService final {
       virtual void CustomImageEndpoint(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLCustomImageEndpointResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void CustomImageEndpoint(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest* request, ::NLCustomImageEndpointResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void CustomImageEndpoint(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLCustomImageEndpointResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
-      virtual void MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void MedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response, std::function<void(::grpc::Status)>) = 0;
       virtual void MedianBlurFilter(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLImage* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void MedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void MedianBlurFilter(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLImage* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
     };
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
@@ -87,8 +87,8 @@ class NLImageService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>* PrepareAsyncRotateImageRaw(::grpc::ClientContext* context, const ::NLImageRotateRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::NLCustomImageEndpointResponse>* AsyncCustomImageEndpointRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::NLCustomImageEndpointResponse>* PrepareAsyncCustomImageEndpointRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>* AsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>* PrepareAsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>* AsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::NLImage>* PrepareAsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -107,11 +107,11 @@ class NLImageService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::NLCustomImageEndpointResponse>> PrepareAsyncCustomImageEndpoint(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::NLCustomImageEndpointResponse>>(PrepareAsyncCustomImageEndpointRaw(context, request, cq));
     }
-    ::grpc::Status MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::NLImage* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::NLImage>> AsyncMedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status MedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::NLImage* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::NLImage>> AsyncMedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::NLImage>>(AsyncMedianBlurFilterRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::NLImage>> PrepareAsyncMedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::NLImage>> PrepareAsyncMedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::NLImage>>(PrepareAsyncMedianBlurFilterRaw(context, request, cq));
     }
     class experimental_async final :
@@ -125,9 +125,9 @@ class NLImageService final {
       void CustomImageEndpoint(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLCustomImageEndpointResponse* response, std::function<void(::grpc::Status)>) override;
       void CustomImageEndpoint(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest* request, ::NLCustomImageEndpointResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void CustomImageEndpoint(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLCustomImageEndpointResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
-      void MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response, std::function<void(::grpc::Status)>) override;
+      void MedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response, std::function<void(::grpc::Status)>) override;
       void MedianBlurFilter(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLImage* response, std::function<void(::grpc::Status)>) override;
-      void MedianBlurFilter(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void MedianBlurFilter(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void MedianBlurFilter(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::NLImage* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
@@ -144,8 +144,8 @@ class NLImageService final {
     ::grpc::ClientAsyncResponseReader< ::NLImage>* PrepareAsyncRotateImageRaw(::grpc::ClientContext* context, const ::NLImageRotateRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::NLCustomImageEndpointResponse>* AsyncCustomImageEndpointRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::NLCustomImageEndpointResponse>* PrepareAsyncCustomImageEndpointRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::NLImage>* AsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::NLImage>* PrepareAsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLCustomImageEndpointRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::NLImage>* AsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::NLImage>* PrepareAsyncMedianBlurFilterRaw(::grpc::ClientContext* context, const ::NLBlurImageEndpointRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RotateImage_;
     const ::grpc::internal::RpcMethod rpcmethod_CustomImageEndpoint_;
     const ::grpc::internal::RpcMethod rpcmethod_MedianBlurFilter_;
@@ -158,7 +158,7 @@ class NLImageService final {
     virtual ~Service();
     virtual ::grpc::Status RotateImage(::grpc::ServerContext* context, const ::NLImageRotateRequest* request, ::NLImage* response);
     virtual ::grpc::Status CustomImageEndpoint(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLCustomImageEndpointResponse* response);
-    virtual ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response);
+    virtual ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_RotateImage : public BaseClass {
@@ -212,11 +212,11 @@ class NLImageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response) override {
+    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestMedianBlurFilter(::grpc::ServerContext* context, ::NLCustomImageEndpointRequest* request, ::grpc::ServerAsyncResponseWriter< ::NLImage>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestMedianBlurFilter(::grpc::ServerContext* context, ::NLBlurImageEndpointRequest* request, ::grpc::ServerAsyncResponseWriter< ::NLImage>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -290,17 +290,17 @@ class NLImageService final {
    public:
     ExperimentalWithCallbackMethod_MedianBlurFilter() {
       ::grpc::Service::experimental().MarkMethodCallback(2,
-        new ::grpc_impl::internal::CallbackUnaryHandler< ::NLCustomImageEndpointRequest, ::NLImage>(
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::NLBlurImageEndpointRequest, ::NLImage>(
           [this](::grpc::ServerContext* context,
-                 const ::NLCustomImageEndpointRequest* request,
+                 const ::NLBlurImageEndpointRequest* request,
                  ::NLImage* response,
                  ::grpc::experimental::ServerCallbackRpcController* controller) {
                    return this->MedianBlurFilter(context, request, response, controller);
                  }));
     }
     void SetMessageAllocatorFor_MedianBlurFilter(
-        ::grpc::experimental::MessageAllocator< ::NLCustomImageEndpointRequest, ::NLImage>* allocator) {
-      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::NLCustomImageEndpointRequest, ::NLImage>*>(
+        ::grpc::experimental::MessageAllocator< ::NLBlurImageEndpointRequest, ::NLImage>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::NLBlurImageEndpointRequest, ::NLImage>*>(
           ::grpc::Service::experimental().GetHandler(2))
               ->SetMessageAllocator(allocator);
     }
@@ -308,11 +308,11 @@ class NLImageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response) override {
+    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual void MedianBlurFilter(::grpc::ServerContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   typedef ExperimentalWithCallbackMethod_RotateImage<ExperimentalWithCallbackMethod_CustomImageEndpoint<ExperimentalWithCallbackMethod_MedianBlurFilter<Service > > > ExperimentalCallbackService;
   template <class BaseClass>
@@ -361,7 +361,7 @@ class NLImageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response) override {
+    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -418,7 +418,7 @@ class NLImageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response) override {
+    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -495,7 +495,7 @@ class NLImageService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response) override {
+    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -548,18 +548,18 @@ class NLImageService final {
    public:
     WithStreamedUnaryMethod_MedianBlurFilter() {
       ::grpc::Service::MarkMethodStreamed(2,
-        new ::grpc::internal::StreamedUnaryHandler< ::NLCustomImageEndpointRequest, ::NLImage>(std::bind(&WithStreamedUnaryMethod_MedianBlurFilter<BaseClass>::StreamedMedianBlurFilter, this, std::placeholders::_1, std::placeholders::_2)));
+        new ::grpc::internal::StreamedUnaryHandler< ::NLBlurImageEndpointRequest, ::NLImage>(std::bind(&WithStreamedUnaryMethod_MedianBlurFilter<BaseClass>::StreamedMedianBlurFilter, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_MedianBlurFilter() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLCustomImageEndpointRequest* request, ::NLImage* response) override {
+    ::grpc::Status MedianBlurFilter(::grpc::ServerContext* context, const ::NLBlurImageEndpointRequest* request, ::NLImage* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedMedianBlurFilter(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::NLCustomImageEndpointRequest,::NLImage>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedMedianBlurFilter(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::NLBlurImageEndpointRequest,::NLImage>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_RotateImage<WithStreamedUnaryMethod_CustomImageEndpoint<WithStreamedUnaryMethod_MedianBlurFilter<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;

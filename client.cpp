@@ -117,7 +117,7 @@ public:
 
     }
 
-    void medianBlurFilter(char* fileName, int is_color_image) {
+    void medianBlurFilter(char* fileName, int is_color_image, int kernel) {
 
         // image we're going to process
         cv::Mat frame;
@@ -130,13 +130,16 @@ public:
         }
 
         // Data we are sending to the server.
-        NLCustomImageEndpointRequest *request = new NLCustomImageEndpointRequest; // has mutable_image()
+        NLBlurImageEndpointRequest *request = new NLBlurImageEndpointRequest; // has mutable_image()
         NLImage tmp = deconstructImage(frame, is_color_image);
         // request->set_allocated_image(*tmp);
         request->mutable_image()->set_height(tmp.height());
         request->mutable_image()->set_width(tmp.width());
         request->mutable_image()->set_color(tmp.color());
         request->mutable_image()->set_data(tmp.data());
+
+        // set kernel
+        request->set_kernel(kernel);
 
         // Container for the data we expect from the server.
         NLImage reply;
@@ -262,10 +265,17 @@ int main() {
         imageChannel.RotateImage(name, is_color_image, rotation);
     }
 
-    cout << "Would you like to run a median blur filter over the image (soften it)? (Y/n)" << endl;
+    cout << "Would you like to run a median blur filter over the image? (Y/n)" << endl;
     cin >> is_yes;
     if (is_yes == 'y' || is_yes == 'Y') {
-        imageChannel.medianBlurFilter(name, CV_8U);
+        int kernel = 5;
+
+        do {
+            cout << "What kernel size would you like to use? (Recommend 5, must be an odd number)" << endl;
+            cin >> kernel;
+        } while (kernel < 0 || kernel % 2 == 0);
+
+        imageChannel.medianBlurFilter(name, is_color_image, kernel);
     }
 
     cout << "Would you like to build ascii art? (Y/n)" << endl;

@@ -48,13 +48,16 @@ struct TableStruct_image_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
   static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_image_2eproto;
+class NLBlurImageEndpointRequest;
+class NLBlurImageEndpointRequestDefaultTypeInternal;
+extern NLBlurImageEndpointRequestDefaultTypeInternal _NLBlurImageEndpointRequest_default_instance_;
 class NLCustomImageEndpointRequest;
 class NLCustomImageEndpointRequestDefaultTypeInternal;
 extern NLCustomImageEndpointRequestDefaultTypeInternal _NLCustomImageEndpointRequest_default_instance_;
@@ -68,6 +71,7 @@ class NLImageRotateRequest;
 class NLImageRotateRequestDefaultTypeInternal;
 extern NLImageRotateRequestDefaultTypeInternal _NLImageRotateRequest_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
+template<> ::NLBlurImageEndpointRequest* Arena::CreateMaybeMessage<::NLBlurImageEndpointRequest>(Arena*);
 template<> ::NLCustomImageEndpointRequest* Arena::CreateMaybeMessage<::NLCustomImageEndpointRequest>(Arena*);
 template<> ::NLCustomImageEndpointResponse* Arena::CreateMaybeMessage<::NLCustomImageEndpointResponse>(Arena*);
 template<> ::NLImage* Arena::CreateMaybeMessage<::NLImage>(Arena*);
@@ -555,6 +559,142 @@ class NLCustomImageEndpointRequest :
 };
 // -------------------------------------------------------------------
 
+class NLBlurImageEndpointRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NLBlurImageEndpointRequest) */ {
+ public:
+  NLBlurImageEndpointRequest();
+  virtual ~NLBlurImageEndpointRequest();
+
+  NLBlurImageEndpointRequest(const NLBlurImageEndpointRequest& from);
+  NLBlurImageEndpointRequest(NLBlurImageEndpointRequest&& from) noexcept
+    : NLBlurImageEndpointRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline NLBlurImageEndpointRequest& operator=(const NLBlurImageEndpointRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NLBlurImageEndpointRequest& operator=(NLBlurImageEndpointRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const NLBlurImageEndpointRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const NLBlurImageEndpointRequest* internal_default_instance() {
+    return reinterpret_cast<const NLBlurImageEndpointRequest*>(
+               &_NLBlurImageEndpointRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  void Swap(NLBlurImageEndpointRequest* other);
+  friend void swap(NLBlurImageEndpointRequest& a, NLBlurImageEndpointRequest& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline NLBlurImageEndpointRequest* New() const final {
+    return CreateMaybeMessage<NLBlurImageEndpointRequest>(nullptr);
+  }
+
+  NLBlurImageEndpointRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<NLBlurImageEndpointRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const NLBlurImageEndpointRequest& from);
+  void MergeFrom(const NLBlurImageEndpointRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NLBlurImageEndpointRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "NLBlurImageEndpointRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_image_2eproto);
+    return ::descriptor_table_image_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .NLImage image = 1;
+  bool has_image() const;
+  void clear_image();
+  static const int kImageFieldNumber = 1;
+  const ::NLImage& image() const;
+  ::NLImage* release_image();
+  ::NLImage* mutable_image();
+  void set_allocated_image(::NLImage* image);
+
+  // int32 kernel = 2;
+  void clear_kernel();
+  static const int kKernelFieldNumber = 2;
+  ::PROTOBUF_NAMESPACE_ID::int32 kernel() const;
+  void set_kernel(::PROTOBUF_NAMESPACE_ID::int32 value);
+
+  // @@protoc_insertion_point(class_scope:NLBlurImageEndpointRequest)
+ private:
+  class HasBitSetters;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::NLImage* image_;
+  ::PROTOBUF_NAMESPACE_ID::int32 kernel_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_image_2eproto;
+};
+// -------------------------------------------------------------------
+
 class NLCustomImageEndpointResponse :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NLCustomImageEndpointResponse) */ {
  public:
@@ -597,7 +737,7 @@ class NLCustomImageEndpointResponse :
                &_NLCustomImageEndpointResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   void Swap(NLCustomImageEndpointResponse* other);
   friend void swap(NLCustomImageEndpointResponse& a, NLCustomImageEndpointResponse& b) {
@@ -912,6 +1052,75 @@ inline void NLCustomImageEndpointRequest::set_allocated_image(::NLImage* image) 
 
 // -------------------------------------------------------------------
 
+// NLBlurImageEndpointRequest
+
+// .NLImage image = 1;
+inline bool NLBlurImageEndpointRequest::has_image() const {
+  return this != internal_default_instance() && image_ != nullptr;
+}
+inline void NLBlurImageEndpointRequest::clear_image() {
+  if (GetArenaNoVirtual() == nullptr && image_ != nullptr) {
+    delete image_;
+  }
+  image_ = nullptr;
+}
+inline const ::NLImage& NLBlurImageEndpointRequest::image() const {
+  const ::NLImage* p = image_;
+  // @@protoc_insertion_point(field_get:NLBlurImageEndpointRequest.image)
+  return p != nullptr ? *p : *reinterpret_cast<const ::NLImage*>(
+      &::_NLImage_default_instance_);
+}
+inline ::NLImage* NLBlurImageEndpointRequest::release_image() {
+  // @@protoc_insertion_point(field_release:NLBlurImageEndpointRequest.image)
+  
+  ::NLImage* temp = image_;
+  image_ = nullptr;
+  return temp;
+}
+inline ::NLImage* NLBlurImageEndpointRequest::mutable_image() {
+  
+  if (image_ == nullptr) {
+    auto* p = CreateMaybeMessage<::NLImage>(GetArenaNoVirtual());
+    image_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:NLBlurImageEndpointRequest.image)
+  return image_;
+}
+inline void NLBlurImageEndpointRequest::set_allocated_image(::NLImage* image) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete image_;
+  }
+  if (image) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      image = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, image, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  image_ = image;
+  // @@protoc_insertion_point(field_set_allocated:NLBlurImageEndpointRequest.image)
+}
+
+// int32 kernel = 2;
+inline void NLBlurImageEndpointRequest::clear_kernel() {
+  kernel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 NLBlurImageEndpointRequest::kernel() const {
+  // @@protoc_insertion_point(field_get:NLBlurImageEndpointRequest.kernel)
+  return kernel_;
+}
+inline void NLBlurImageEndpointRequest::set_kernel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  kernel_ = value;
+  // @@protoc_insertion_point(field_set:NLBlurImageEndpointRequest.kernel)
+}
+
+// -------------------------------------------------------------------
+
 // NLCustomImageEndpointResponse
 
 // .NLImage image = 1;
@@ -968,6 +1177,8 @@ inline void NLCustomImageEndpointResponse::set_allocated_image(::NLImage* image)
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

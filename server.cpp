@@ -93,12 +93,18 @@ public:
      * Custom endpoint fixes images that have dead pixels by applying a blur to
      * the photo
     */
-    Status MedianBlurFilter(ServerContext* context, const NLCustomImageEndpointRequest* request, NLImage* reply) {
+    Status MedianBlurFilter(ServerContext* context, const NLBlurImageEndpointRequest* request, NLImage* reply) {
         // read in image
         cv::Mat src = reconstructImage((*request).image());
 
+        if ((*request).kernel() % 2 == 0) {
+            // kernel must be >= 3 and not divisible by 2
+            printf("Kernel size %i is invalid, exiting\n", (*request).kernel());
+            return Status::CANCELLED;
+        }
+
         // src, dst, kernel
-        medianBlur(src, src, 5);
+        cv::medianBlur(src, src, (*request).kernel());
 
         // places blurred photo into reply NLImage protobuf
         deconstructImage(src, reply);
