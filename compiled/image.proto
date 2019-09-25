@@ -3,20 +3,15 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.neuralink.interviewing";
 
-// package NL;
-
 // A single image which might be grayscale, or color.
 //
-// When color == false, this image is black and white.
-// In this case, the data is single channel and stored
-// row-wise.
+// Color is based of the OpenCV Mat definitions for
+// channel/color combinations, such as CV_8U
+// https://docs.opencv.org/3.4/d1/d1b/group__core__hal__interface.html
 //
 // When color == true, this is a color image.  In
 // this case, the data is 3 channel rgb with the rgb
 // triplets stored row-wise.
-//
-// NOTE - I modified the color value from bool to int32
-// to make the server more accepting of iamges.
 message NLImage {
     int32 color = 1;
     bytes data = 2;
