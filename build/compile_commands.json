@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/build -I/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server -I/usr/local/include -isystem /usr/local/Cellar/opencv/4.6.0/include/opencv4 -std=c++0x -Wall -g -Werror -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++11 -o CMakeFiles/server.dir/server.cpp.o -c /Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/server.cpp",
+  "file": "/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/server.cpp"
+},
+{
+  "directory": "/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/build -I/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server -I/usr/local/include -isystem /usr/local/Cellar/opencv/4.6.0/include/opencv4 -std=c++0x -Wall -g -Werror -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++11 -o CMakeFiles/server.dir/compiled/image.pb.cc.o -c /Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/compiled/image.pb.cc",
+  "file": "/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/compiled/image.pb.cc"
+},
+{
+  "directory": "/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/build -I/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server -I/usr/local/include -isystem /usr/local/Cellar/opencv/4.6.0/include/opencv4 -std=c++0x -Wall -g -Werror -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++11 -o CMakeFiles/client.dir/client.cpp.o -c /Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/client.cpp",
+  "file": "/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/client.cpp"
+},
+{
+  "directory": "/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -I/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/build -I/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server -I/usr/local/include -isystem /usr/local/Cellar/opencv/4.6.0/include/opencv4 -std=c++0x -Wall -g -Werror -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -std=gnu++11 -o CMakeFiles/client.dir/compiled/image.pb.cc.o -c /Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/compiled/image.pb.cc",
+  "file": "/Users/sharulrosli/Desktop/sharul_repo/gRPC_image_server/compiled/image.pb.cc"
+}
+]
